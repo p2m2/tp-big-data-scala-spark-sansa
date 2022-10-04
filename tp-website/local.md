@@ -1,8 +1,11 @@
 # Commandes SPARK pour une installation locale
 
+[index](./index.md)
+
 ## Pre-requis
 
-- Installation Java/Spark/sansa
+- Installation Java/Spark
+- Téléchargement du jar de [Sansa](https://github.com/SANSA-Stack/SANSA-Stack/releases/download/v0.8.5_ExPAD/sansa-ml-spark_2.12-0.8.0-RC3-SNAPSHOT-jar-with-dependencies.jar)
 
 ### Repertoire de log
 

@@ -5,6 +5,7 @@
 https://metabolomics-datalake.ara.inrae.fr/
 
 ## Execution de la commande interactive spark-shell
+[index](./index.md)
 
 Il faut adapter les options "executor-memory" et "num-executors"
 

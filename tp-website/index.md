@@ -1,5 +1,11 @@
 # TP
 
+## Environnment d'exécution
+
+- [Local](./local.md)
+- [Cluster de l'atelier](./clustertp.md)
+- [Metabolomics  Semantic Datalake](./msd.md)
+
 ## 1) Tester en local le traitement sur un jeu de donnée test
 
 ```scala
@@ -52,11 +58,19 @@ resultsDF.write.parquet("./results/compound_taxon.parquet")
 
 ## 2) Intégrer ce code dans une application spark
 
+### Récupération du projet GIT du TP
+
 ```
 git clone git@github.com:p2m2/tp-big-data-scala-spark-sansa.git
 ```
 
-## 3) Générer l'assemblage du jar pour un test en local
+### Assemblaage du Jar
+
+```
+git@github.com:p2m2/tp-big-data-scala-spark-sansa.git
+```
+
+## 3) Générer l'assemblage du jar pour un test en local en modifiant le *Main* de l'application
 
 ## 4) Générer l'assemblage du jar pour un test sur le cluster
 

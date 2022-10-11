@@ -93,14 +93,15 @@ resultsDF.write.parquet("./results/compound_taxon.parquet")
 
 ## Intégrer ce code dans une application spark
 
-
 ### Connectez vous au cluster Big Data
 
-### Reperez les fichiers RDF sur le cluster (hdfs dfs -ls)
+### Reperez les fichiers RDF sur le cluster (commande hdfs)
 
-[documentation hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+Les fichiers sont localisés sur le stockage hdfs dans le répertoire */rdf*.
 
-### Verifiez la structure des fichiers avec la command head (hdfs dfs -head)
+:information_source: [documentation hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+
+### Verifiez la structure des fichiers avec la command head
 
 ### Base du TP
 

@@ -22,15 +22,18 @@ Associer un composé du projet [FORUM](https://forum-webapp.semantic-metabolomic
 - [Cluster de l'atelier](./clustertp.md)
 - [Metabolomics Semantic Datalake](./msd.md)
 
+L'idéal est de réaliser le développement et les tests sur votre machine personnel puis de lancer le traitement sur le cluster.
+
 Pour l'environnement de travail, il faut se référer aux [pré-requis](./prerequisites.md).
 
-## Traitement sur un jeu de donnée test
+
+## Traitement sur un jeu de données test
 
 Nous allons travailler a partir d'un jeu de donnée test qui se trouve dans [rdf-files-test](https://github.com/p2m2/tp-big-data-scala-spark-sansa/tree/main/rdf-files-test)
 
-### Executez un  sbt-shell pour travailler sur ce jeu de donnée
+### Exécutez un  sbt-shell pour travailler sur ce jeu de donnée
 
-### Execution du traitement
+### Exécution du traitement
 
 Il s'agit ici de construire avec [Sansa](http://sansa-stack.github.io/SANSA-Stack/)
 

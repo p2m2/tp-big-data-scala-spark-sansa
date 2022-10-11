@@ -12,7 +12,7 @@ Pour mettre au point la méthode nous utiliserons un spark-shell puis nous devel
 
 Associer un composé du projet [FORUM](https://forum-webapp.semantic-metabolomics.fr/#/about) avec un [PubChem/Taxonomy](https://pubchem.ncbi.nlm.nih.gov/source/22056) .
 
-![fig1](./img/fig1.png){width=50%}
+![fig1](./img/fig1.png)
 
 [Les données RDF](./databases.md)
 
@@ -22,11 +22,8 @@ Associer un composé du projet [FORUM](https://forum-webapp.semantic-metabolomic
 - [Cluster de l'atelier](./clustertp.md)
 - [Metabolomics  Semantic Datalake](./msd.md)
 
-Pour l'environnement de travail  il faut se référer aux [pré-requis](./prerequisites.md).
+Pour l'environnement de travail, il faut se référer aux [pré-requis](./prerequisites.md).
 
-## Base du TP
-
-installez [l'archive du tp](https://github.com/p2m2/tp-big-data-scala-spark-sansa/archive/refs/heads/main.zip)
 
 ## Traitement sur un jeu de donnée test
 
@@ -94,24 +91,25 @@ resultsDF.write.parquet("./results/compound_taxon.parquet")
 
 ## Intégrer ce code dans une application spark
 
+
 ### Connectez vous au cluster Big Data
 
 ### Reperez les fichiers RDF sur le cluster (hdfs dfs -ls)
 
 [documentation hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
-#### verifier leurs structures avec la command head (hdfs dfs -head)
+### Verifiez la structure des fichiers avec la command head (hdfs dfs -head)
 
-### Récupération du projet GIT du TP
+### Base du TP
 
-```
-git clone git@github.com:p2m2/tp-big-data-scala-spark-sansa.git
-```
+Récuperez [l'archive template du tp](https://github.com/p2m2/tp-big-data-scala-spark-sansa/archive/refs/heads/main.zip) 
 
-### Assemblaage du Jar
+### Intégrez dans la classe Main le traitement
 
-```
-git@github.com:p2m2/tp-big-data-scala-spark-sansa.git
+### Assemblage du Jar
+
+```shell
+sbt assembly
 ```
 
 ## 3) Générer l'assemblage du jar pour un test en local en modifiant le *Main* de l'application

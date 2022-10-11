@@ -23,7 +23,7 @@ object Main extends App {
   /**
    * Accès au jeux de données test
    */
-  def getTestDataset : Dataset[Triple] = {
+  def getDatasetTest : Dataset[Triple] = {
     val taxonomyPath = "rdf-files-test/pc_taxonomy_test.ttl"
     val meshPath = "rdf-files-test/mesh_test.nt"
     val assoforumChebiMesh = "rdf-files-test/triples_assos_chebi_mesh_test.ttl"
@@ -34,24 +34,35 @@ object Main extends App {
   }
 
   /**
-   * Accès au jeux de données sur le cluster
+   * Accès au jeux de données sur le cluster MSD
    */
-  def getDataset : Dataset[Triple] = {
-    val taxonomyPath="./rdf/pc_taxonomy.ttl"
+  def getDatasetMsd : Dataset[Triple] = {
+    val taxonomyPath="/user/ofilangi/rdf/pc_taxonomy.ttl"
     val meshPath="/rdf/nlm/mesh/SHA_5a785145/mesh.nt"
-    val assoforumChebiMesh1="./rdf/triples_assos_CHEBI_MESH_1.ttl"
-    val assoforumChebiMesh2="./rdf/triples_assos_CHEBI_MESH_2.ttl"
-    val assoforumChebiMesh3="./rdf/triples_assos_CHEBI_MESH_3.ttl"
+    val assoforum="/user/ofilangi/rdf/forum.nt"
 
     spark.rdf(Lang.TURTLE)(taxonomyPath).toDS()
       .union(spark.rdf(Lang.NT)(meshPath).toDS())
-      .union(spark.rdf(Lang.TURTLE)(assoforumChebiMesh1).toDS())
-      .union(spark.rdf(Lang.TURTLE)(assoforumChebiMesh2).toDS())
-      .union(spark.rdf(Lang.TURTLE)(assoforumChebiMesh3).toDS())
+      .union(spark.rdf(Lang.NT)(assoforum).toDS())
   }
 
+  /**
+    * Accès au cluster de l'atelier
+    */
+
+  def getDatasetClusterAtelier : Dataset[Triple] = {
+    val taxonomyPath="/rdf/pc_taxonomy.ttl"
+    val meshPath="/rdf/nlm/mesh/SHA_5a785145/mesh.nt"
+    val assoforum="/rdf/forum.nt"
+
+    spark.rdf(Lang.TURTLE)(taxonomyPath).toDS()
+      .union(spark.rdf(Lang.NT)(meshPath).toDS())
+      .union(spark.rdf(Lang.NT)(assoforum).toDS())
+  }
+
+
   /** Choisir le bon dataset  */
-    val triplesDataset: Dataset[Triple] = getDataset
+    val triplesDataset: Dataset[Triple] = getDatasetTest
 
   /** Requete SPARQL qui associe des composés à un taxon */
     val query =

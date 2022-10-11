@@ -20,10 +20,9 @@ Associer un composé du projet [FORUM](https://forum-webapp.semantic-metabolomic
 
 - [Local](./local.md)
 - [Cluster de l'atelier](./clustertp.md)
-- [Metabolomics  Semantic Datalake](./msd.md)
+- [Metabolomics Semantic Datalake](./msd.md)
 
 Pour l'environnement de travail, il faut se référer aux [pré-requis](./prerequisites.md).
-
 
 ## Traitement sur un jeu de donnée test
 
@@ -112,7 +111,6 @@ Récuperez [l'archive template du tp](https://github.com/p2m2/tp-big-data-scala-
 sbt assembly
 ```
 
-## 3) Générer l'assemblage du jar pour un test en local en modifiant le *Main* de l'application
-
-## 4) Générer l'assemblage du jar pour un test sur le cluster
+#### Générez l'assemblage du jar pour un test en local 
+#### Générez l'assemblage du jar pour un test sur le cluster
 

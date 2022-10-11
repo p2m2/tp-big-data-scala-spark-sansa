@@ -15,6 +15,14 @@ wget https://github.com/AdoptOpenJDK/openjdk12-binaries/releases/download/jdk-12
 tar xvf OpenJDK12U-jdk_x64_linux_hotspot_12.0.2_10.tar.gz
 ```
 
+## Spark
+
+```shell=
+wget https://dlcdn.apache.org/spark/spark-3.3.0/spark-3.3.0-bin-hadoop3.tgz
+tar xvf spark-3.3.0-bin-hadoop3.tgz
+sudo mv spark-3.3.0-bin-hadoop3 /usr/local/share/spark
+```
+
 ## bashrc
 ```shell=
 export JAVA_HOME=/usr/local/openjdk/jdk-12.0.2+10/

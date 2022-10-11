@@ -2,6 +2,12 @@
 
 [index](./index.md)
 
+## Environnement d'execution / Editeurs
+
+### SBT
+
+ - [SBT - The interactive build tool](https://www.scala-sbt.org/download.html)
+
 ## Java installation
 
 ```shell=
@@ -17,14 +23,21 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 ## Sansa installation
 
-Cette étape n'est pas obligatoire pour une installation locale. 
-Vous pouvez télécharger le fichier jar sur le repo Git du [projet](https://github.com/SANSA-Stack/SANSA-Stack/releases/download/v0.8.5_ExPAD/sansa-ml-spark_2.12-0.8.0-RC3-SNAPSHOT-jar-with-dependencies.jar)
+Cette étape n'est pas obligatoire pour une installation locale. Vous pouvez télécharger le fichier jar sur le repo Git du [projet](https://github.com/SANSA-Stack/SANSA-Stack/releases/download/v0.8.5_ExPAD/sansa-ml-spark_2.12-0.8.0-RC3-SNAPSHOT-jar-with-dependencies.jar)
 
-Pour des raisons de compatibilités de versions Spark/Hadoop sur les clusters, il vaut mieux creer le jar sur l'infrastructure avec les commandes suivantes.
-attention, il faut préalablement initialiser l'environnement java.
+
+Pour des raisons de compatibilités des versions Spark/Hadoop sur les clusters, il vaut mieux créer le jar sur l'infrastructure avec les commandes suivantes.
+
+Attention, il faut préalablement initialiser l'environnement java.
 
 ```shell=
 git clone https://github.com/SANSA-Stack/SANSA-Stack.git
 cd SANSA-Stack
 sh ./dev/make_spark_dist.sh 
 ```
+
+
+### EDI
+
+- [IntelliJ IDEA](https://www.jetbrains.com/idea/download/#section=linux)
+- [Visual Studio Code](https://code.visualstudio.com/)

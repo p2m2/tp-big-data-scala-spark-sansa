@@ -70,8 +70,7 @@ WHERE {
     ?descriptor ?prop ?mesh .
     FILTER ( ?prop=meshv:concept || ?prop=meshv:preferredConcept )
     ?taxon skos:closeMatch ?mesh .
-} limit 10
-
+}
 """
 
     import net.sansa_stack.ml.spark.featureExtraction.SparqlFrame

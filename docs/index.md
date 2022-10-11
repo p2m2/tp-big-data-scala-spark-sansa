@@ -1,12 +1,47 @@
-# TP
+# Atelier Big Data - 10 au 12 janvier 2023 - Hadoop/Spark/RDF
 
-## Environnment d'exécution
+## Objectifs
+
+L'objectif de ce TP est d'intégrer puis d'utiliser des graphes de connaissances au format RDF de plusieurs sources (Mesh, NCBI, FORUM) dans un DataLake et un environnement Spark/Hadoop. 
+
+Nous utiliserons des commandes Hadoop pour la gestion des fichiers et developperons en language scala pour le traitement. 
+
+Pour mettre au point la méthode nous utiliserons un spark-shell puis nous developperons une applicaion spark pour automatiser le traitement.
+
+## Sujet
+
+Associer un composé du projet [FORUM](https://forum-webapp.semantic-metabolomics.fr/#/about) avec un [PubChem/Taxonomy](https://pubchem.ncbi.nlm.nih.gov/source/22056) .
+
+[Les données RDF](./databases.md)
+
+## Plateforme d'exécution
 
 - [Local](./local.md)
 - [Cluster de l'atelier](./clustertp.md)
 - [Metabolomics  Semantic Datalake](./msd.md)
 
-## 1) Tester en local le traitement sur un jeu de donnée test
+Pour l'environnement de travail  il faut se référer aux [pré-requis](./prerequisites.md).
+
+## Base du TP
+
+installez [l'archive du tp](https://github.com/p2m2/tp-big-data-scala-spark-sansa/archive/refs/heads/main.zip)
+
+## Traitement sur un jeu de donnée test
+
+Nous allons travailler a partir d'un jeu de donnée test qui se trouve dans [rdf-files-test](https://github.com/p2m2/tp-big-data-scala-spark-sansa/tree/main/rdf-files-test)
+
+### 1) Executez un  sbt-shell pour travailler sur ce jeu de donnée
+
+### 2) Execution du traitement
+
+Il s'agit ici de construire avec [Sansa](http://sansa-stack.github.io/SANSA-Stack/)
+
+ - un Dataset par fichier RDF
+ - créer un Dataset qui merge les trois Datasets
+ - Executer une requete SPARQL
+ - créer un Dataset resultat au format parquet
+  
+
 
 ```scala
 val taxonomyPath="rdf-files-test/pc_taxonomy_test.ttl"
@@ -36,8 +71,7 @@ WHERE {
     ?descriptor ?prop ?mesh .
     FILTER ( ?prop=meshv:concept || ?prop=meshv:preferredConcept )
     ?taxon skos:closeMatch ?mesh .
-} limit 10
-
+}
 """
 
 import net.sansa_stack.ml.spark.featureExtraction.SparqlFrame

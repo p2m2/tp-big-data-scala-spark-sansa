@@ -60,5 +60,56 @@ object Main extends App {
       .union(spark.rdf(Lang.NT)(assoforum).toDS())
   }
 
-  // ...
+
+  /** Choisir le bon dataset  */
+    val triplesDataset: Dataset[Triple] = getDatasetTest
+
+  /** Requete SPARQL qui associe des composés à un taxon */
+    val query =
+      """
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX meshv: <http://id.nlm.nih.gov/mesh/vocab#>
+PREFIX chebi: <http://purl.obolibrary.org/obo/CHEBI_>
+PREFIX mesh: <http://id.nlm.nih.gov/mesh/>
+
+SELECT ?compound ?prop ?mesh ?taxon
+WHERE {
+  ?compound skos:related ?descriptor .
+    ?descriptor ?prop ?mesh .
+    FILTER ( ?prop=meshv:concept || ?prop=meshv:preferredConcept )
+    ?taxon skos:closeMatch ?mesh .
+}
+"""
+
+    import net.sansa_stack.ml.spark.featureExtraction.SparqlFrame
+    import net.sansa_stack.query.spark.SPARQLEngine
+
+  /**
+   * Préparation de l'environnement d'execution Sansa
+   */
+  val sparqlFrame =
+      new SparqlFrame()
+        .setSparqlQuery(query)
+        .setQueryExcecutionEngine(SPARQLEngine.Sparqlify)
+
+  /**
+   * Récupération des résultats
+   */
+  val resultsDF: DataFrame = sparqlFrame.transform(triplesDataset)
+
+  /**
+   * Affichage du premier element
+   */
+
+  println(resultsDF.take(1).mkString("Array(", ", ", ")"))
+
+  /**
+   * Peristence des résultats au format parquet
+   */
+  resultsDF.write.parquet("./results/compound_taxon.parquet")
+
+
 }

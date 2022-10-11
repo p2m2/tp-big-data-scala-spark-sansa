@@ -38,5 +38,5 @@ spark-submit  \
   --conf spark.yarn.appMasterEnv.JAVA_HOME="/usr/local/openjdk/jdk-12.0.2+10/" \
   --conf spark.executorEnv.JAVA_HOME="/usr/local/openjdk/jdk-12.0.2+10/" \
   --conf spark.yarn.submit.waitAppCompletion="false" \
-  --jars /usr/share/java/sansa-stack-spark_2.12-0.8.4_ExDistAD.jar tp.jar
+  --jars /usr/share/java/sansa-stack-spark_2.12-0.8.4_ExDistAD.jar <path/tp.ja>
 ```   

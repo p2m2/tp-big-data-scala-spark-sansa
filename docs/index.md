@@ -2,11 +2,11 @@
 
 ## Objectifs
 
-L'objectif de ce TP est d'intégrer puis d'utiliser des graphes de connaissances au format RDF de plusieurs sources (Mesh, NCBI, FORUM) dans un DataLake et un environnement Spark/Hadoop. 
+L'objectif de ce TP est d'intégrer puis d'utiliser des graphes de connaissances (fichier RDF) de plusieurs sources (Mesh, NCBI, FORUM) dans un DataLake et un environnement Spark/Hadoop. 
 
-Nous utiliserons des commandes Hadoop pour la gestion des fichiers et developperons en language scala pour le traitement. 
+Nous utiliserons des [commandes Hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html) pour la gestion des fichiers et nous developperons le traitement en language [scala](https://www.scala-lang.org/). 
 
-Pour mettre au point la méthode nous utiliserons un spark-shell puis nous developperons une applicaion spark pour automatiser le traitement.
+Pour mettre au point la méthode nous utiliserons un [spark-shell](https://spark.apache.org/docs/latest/quick-start.html) puis nous developperons une application spark pour automatiser le traitement.
 
 ## Sujet
 
@@ -22,16 +22,16 @@ Associer un composé du projet [FORUM](https://forum-webapp.semantic-metabolomic
 - [Cluster de l'atelier](./clustertp.md)
 - [Metabolomics Semantic Datalake](./msd.md)
 
-L'idéal est de réaliser le développement et les tests sur votre machine personnel puis de lancer le traitement sur le cluster.
+L'idéal est de réaliser le développement et les tests sur votre machine personnelle puis de lancer le traitement sur le cluster.
 
-Pour l'environnement de travail, il faut se référer aux [pré-requis](./prerequisites.md).
+Pour l'environnement de travail, il faut se référer aux [prérequis](./prerequisites.md).
 
 
 ## Traitement sur un jeu de données test
 
-Nous allons travailler a partir d'un jeu de donnée test qui se trouve dans [rdf-files-test](https://github.com/p2m2/tp-big-data-scala-spark-sansa/tree/main/rdf-files-test)
+Nous allons travailler a partir d'un jeu de données test qui se trouve dans [rdf-files-test](https://github.com/p2m2/tp-big-data-scala-spark-sansa/tree/main/rdf-files-test)
 
-### Exécutez un  sbt-shell pour travailler sur ce jeu de donnée
+### Exécutez un  sbt-shell pour travailler sur ce jeu de données
 
 ### Exécution du traitement
 

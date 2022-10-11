@@ -1,8 +1,8 @@
-# Prerequisites
+# Prérequis
 
 [index](./index.md)
 
-## Environnement d'execution / Editeurs
+## Environnement d'exécution / editeurs
 
 ### SBT
 
@@ -26,16 +26,13 @@ export PATH=$JAVA_HOME/bin:$PATH
 Cette étape n'est pas obligatoire pour une installation locale. Vous pouvez télécharger le fichier jar sur le repo Git du [projet](https://github.com/SANSA-Stack/SANSA-Stack/releases/download/v0.8.5_ExPAD/sansa-ml-spark_2.12-0.8.0-RC3-SNAPSHOT-jar-with-dependencies.jar)
 
 
-Pour des raisons de compatibilités des versions Spark/Hadoop sur les clusters, il vaut mieux créer le jar sur l'infrastructure avec les commandes suivantes.
-
-Attention, il faut préalablement initialiser l'environnement java.
+Pour des raisons de compatibilité des versions Spark/Hadoop sur les clusters, il vaut mieux générer le jar sur l'infrastructure avec les commandes suivantes (:warning: il faut préalablement initialiser l'environnement java) .
 
 ```shell=
 git clone https://github.com/SANSA-Stack/SANSA-Stack.git
 cd SANSA-Stack
 sh ./dev/make_spark_dist.sh 
 ```
-
 
 ### EDI
 

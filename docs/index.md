@@ -12,7 +12,7 @@ Pour mettre au point la méthode nous utiliserons un spark-shell puis nous devel
 
 Associer un composé du projet [FORUM](https://forum-webapp.semantic-metabolomics.fr/#/about) avec un [PubChem/Taxonomy](https://pubchem.ncbi.nlm.nih.gov/source/22056) .
 
-![fig1](./../img/fig1.png)
+![fig1](./img/fig1.png) { width=50% }
 
 [Les données RDF](./databases.md)
 

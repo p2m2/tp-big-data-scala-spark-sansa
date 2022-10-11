@@ -12,6 +12,8 @@ Pour mettre au point la méthode nous utiliserons un spark-shell puis nous devel
 
 Associer un composé du projet [FORUM](https://forum-webapp.semantic-metabolomics.fr/#/about) avec un [PubChem/Taxonomy](https://pubchem.ncbi.nlm.nih.gov/source/22056) .
 
+![fig1](./../img/fig1.png){ width=50% }
+
 [Les données RDF](./databases.md)
 
 ## Plateforme d'exécution
@@ -30,9 +32,9 @@ installez [l'archive du tp](https://github.com/p2m2/tp-big-data-scala-spark-sans
 
 Nous allons travailler a partir d'un jeu de donnée test qui se trouve dans [rdf-files-test](https://github.com/p2m2/tp-big-data-scala-spark-sansa/tree/main/rdf-files-test)
 
-### 1) Executez un  sbt-shell pour travailler sur ce jeu de donnée
+### Executez un  sbt-shell pour travailler sur ce jeu de donnée
 
-### 2) Execution du traitement
+### Execution du traitement
 
 Il s'agit ici de construire avec [Sansa](http://sansa-stack.github.io/SANSA-Stack/)
 
@@ -90,7 +92,15 @@ resultsDF.map( row => (row.get(0).toString,row.get(2).toString,row.get(0).toStri
 resultsDF.write.parquet("./results/compound_taxon.parquet")
 ```
 
-## 2) Intégrer ce code dans une application spark
+## Intégrer ce code dans une application spark
+
+### Connectez vous au cluster Big Data
+
+### Reperez les fichiers RDF sur le cluster (hdfs dfs -ls)
+
+[documentation hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+
+#### verifier leurs structures avec la command head (hdfs dfs -head)
 
 ### Récupération du projet GIT du TP
 

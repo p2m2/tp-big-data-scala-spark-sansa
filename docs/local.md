@@ -16,7 +16,7 @@ mkdir /tmp/spark-events
 ### Execution du Spark-history
 
 ```shell
-$SPARK_DIR/sbin/start-history-server.sh
+/usr/local/share/spark/sbin/start-history-server.sh
 ```
 
 ## Execution de la commande interactive spark-shell
@@ -31,7 +31,7 @@ $SPARK_DIR/sbin/start-history-server.sh
   --conf "spark.kryoserializer.buffer.max=2000" \
   --executor-memory 1G  \
   --num-executors 1 \
-  --jars ./sansa-ml-spark_2.12-0.8.0-RC3-SNAPSHOT-jar-with-dependencies.jar
+  --jars <PATH_SANSA>/sansa-ml-spark_2.12-0.8.0-RC3-SNAPSHOT-jar-with-dependencies.jar
 ```
 
 

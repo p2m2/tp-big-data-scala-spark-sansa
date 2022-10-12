@@ -17,7 +17,7 @@ Associer un composé du projet [FORUM](https://forum-webapp.semantic-metabolomic
 [Les données RDF](./databases.md)
 
 
-### Utilisation d'un  sbt-shell pour travailler sur le jeu de données test
+### A - Utilisation d'un  sbt-shell pour travailler sur le jeu de données test
 
 L'idéal est de réaliser le développement et les tests sur votre machine personnelle puis de lancer le traitement sur le cluster avec les données réelles.
 
@@ -92,7 +92,14 @@ resultsDF.map( row => (row.get(0).toString,row.get(2).toString,row.get(0).toStri
 resultsDF.write.parquet("./results/compound_taxon.parquet")
 ```
 
-### Intégration du code dans une application spark
+#### Inspectez le resultat *./results/compound_taxon.parquet* . Combien de couple composé/taxon est enregistré ?
+
+- via *ls/cat* ou *hdfs dfs -ls/cat*
+- via *spark-shell / spark.read.load("./results/compound_taxon.parquet").count*
+
+#### Inspectez le spark-history
+
+### B - Intégration du code dans une application spark
 
 #### Connectez vous au cluster Big Data
 

@@ -39,3 +39,9 @@ spark-submit \
  --jars /usr/share/java/sansa-stack-spark_2.12-0.8.0-RC3-SNAPSHOT-jar-with-dependencies.jar <path/tp.jar>
 
 ```   
+
+## Redirection du Spark history sur la machine locale
+
+```
+ssh -f <login>@147.100.202.42 -L 18081:localhost:18080 -N
+```

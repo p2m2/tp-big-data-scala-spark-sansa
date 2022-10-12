@@ -4,7 +4,7 @@
 
 ## Java installation
 
-```shell=
+```shell
 wget https://github.com/AdoptOpenJDK/openjdk12-binaries/releases/download/jdk-12.0.2%2B10/OpenJDK12U-jdk_x64_linux_hotspot_12.0.2_10.tar.gz
 tar xvf OpenJDK12U-jdk_x64_linux_hotspot_12.0.2_10.tar.gz
 sudo mkdir /usr/local/openjdk
@@ -15,14 +15,14 @@ sudo mv jdk-12.0.2+10 /usr/local/openjdk/
 
 mettre dans le fichier ~/.bash_profile
 
-```shell=
+```shell
 export JAVA_HOME=/usr/local/openjdk/jdk-12.0.2+10/
 export PATH=$JAVA_HOME/bin:$PATH
 ```
 
 ## Spark
 
-```shell=
+```shell
 wget https://downloads.apache.org/spark/spark-3.3.0/spark-3.3.0-bin-hadoop3.tgz
 tar xvf spark-3.3.0-bin-hadoop3.tgz
 sudo mv spark-3.3.0-bin-hadoop3 /usr/local/share/spark
@@ -32,7 +32,7 @@ sudo mv spark-3.3.0-bin-hadoop3 /usr/local/share/spark
 
  - [SBT - The interactive build tool](https://www.scala-sbt.org/download.html)
 
-```shell=
+```shell
 wget https://github.com/sbt/sbt/releases/download/v1.7.2/sbt-1.7.2.tgz
 tar xvf sbt-1.7.2.tgz
 sudo mv sbt /usr/local/share/

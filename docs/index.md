@@ -26,25 +26,24 @@ Il faut se référer à la partie ["installation"](./prerequisites.md) si vous s
 
 #### Les plateformes d'exécution
 
-- [Local](./local.md)
+- [Local/Cloud Orion/Cloud Genostack](./local.md)
 - [Cluster de l'atelier](./clustertp.md)
 - [Metabolomics Semantic Datalake](./msd.md)
 
-## Traitement sur un jeu de données test
+#### Traitement sur un jeu de données test
 
 Nous allons travailler a partir d'un jeu de données test qui se trouve dans [rdf-files-test](https://github.com/p2m2/tp-big-data-scala-spark-sansa/tree/main/rdf-files-test)
 
 
 ### Exécution du traitement
 
-Il s'agit ici de construire avec [Sansa](http://sansa-stack.github.io/SANSA-Stack/)
+Avec l'utilisation de [Sansa](http://sansa-stack.github.io/SANSA-Stack/), il s'agit ici de : 
 
- - un Dataset par fichier RDF
- - créer un Dataset qui merge les trois Datasets
- - Executer une requete SPARQL
- - créer un Dataset resultat au format parquet
+ - 1) créer un *Dataset* pour chasque fichier RDF ;
+ - 2) créer un *Dataset* commun qui fussionne les trois *Datasets* ;
+ - 3) exécuter une requete SPARQL sur ce dernier *Dataset* ;
+ - 4) sauvegarder les resultat au format parquet sur le cluster hdfs .
   
-
 
 ```scala
 val taxonomyPath="rdf-files-test/pc_taxonomy_test.ttl"
@@ -93,25 +92,25 @@ resultsDF.map( row => (row.get(0).toString,row.get(2).toString,row.get(0).toStri
 resultsDF.write.parquet("./results/compound_taxon.parquet")
 ```
 
-## Intégrer ce code dans une application spark
+### Intégration du code dans une application spark
 
-### Connectez vous au cluster Big Data
+#### Connectez vous au cluster Big Data
 
-### Reperez les fichiers RDF sur le cluster (commande hdfs)
+#### Reperez les fichiers RDF sur le cluster (commande hdfs)
 
 Les fichiers sont localisés sur le stockage hdfs dans le répertoire */rdf*.
 
 :information_source: [documentation hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
-### Verifiez la structure des fichiers avec la command head
+#### Verifiez la structure des fichiers avec la command head
 
-### Base du TP
+#### Archive du TP
 
 Récuperez [l'archive template du tp](https://github.com/p2m2/tp-big-data-scala-spark-sansa/archive/refs/heads/main.zip) 
 
-### Intégrez dans la classe Main le traitement
+#### Intégrez dans la classe Main le traitement
 
-### Assemblage du Jar
+#### Assemblage du Jar
 
 ```shell
 sbt assembly

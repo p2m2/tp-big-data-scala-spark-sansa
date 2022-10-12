@@ -130,3 +130,11 @@ sbt assembly
 
 - [github du tp](https://github.com/p2m2/tp-big-data-scala-spark-sansa/)
 - [documentation hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+
+
+## Commandes YARN
+
+- Etat des workers : `yarn node -list -all`
+- Process en cours : `yarn top`
+- List des jobs : `yarn application -list`
+- Log d'un job : `yarn logs -applicationId application_<XXXX>`

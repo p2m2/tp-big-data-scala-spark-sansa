@@ -21,10 +21,10 @@ Associer un composé du projet [FORUM](https://forum-webapp.semantic-metabolomic
 
 L'idéal est de réaliser le développement et les tests sur votre machine personnelle puis de lancer le traitement sur le cluster avec les données réelles.
 
-Il faut se référer à la partie ["installation"](./prerequisites.md) si vous souhaitez travailler dans un envvironnement de développement sur vore machine ou sur une machine créer à partir d'un cloud académique ([orion](https://orion.cloud.inrae.fr/) ou [genostack](https://genostack.genouest.org/) par exemple).
+Il faut se référer à la partie ["installation"](./prerequisites.md) si vous souhaitez travailler dans un envvironnement de développement personnel ou sur une machine virtuelle instanciée à partir d'un cloud académique ([orion](https://orion.cloud.inrae.fr/) ou [genostack](https://genostack.genouest.org/) par exemple).
 
 
-#### Plateforme d'exécution
+#### Les plateformes d'exécution
 
 - [Local](./local.md)
 - [Cluster de l'atelier](./clustertp.md)

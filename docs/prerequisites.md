@@ -1,6 +1,4 @@
-# Prérequis
-
-[index](./index.md)
+# Installation
 
 ## Environnement d'exécution / editeurs
 

@@ -16,22 +16,24 @@ Associer un composé du projet [FORUM](https://forum-webapp.semantic-metabolomic
 
 [Les données RDF](./databases.md)
 
-## Plateforme d'exécution
+
+### Utilisation d'un  sbt-shell pour travailler sur le jeu de données test
+
+L'idéal est de réaliser le développement et les tests sur votre machine personnelle puis de lancer le traitement sur le cluster avec les données réelles.
+
+Il faut se référer à la partie ["installation"](./prerequisites.md) si vous souhaitez travailler dans un envvironnement de développement sur vore machine ou sur une machine créer à partir d'un cloud académique ([orion](https://orion.cloud.inrae.fr/) ou [genostack](https://genostack.genouest.org/) par exemple).
+
+
+#### Plateforme d'exécution
 
 - [Local](./local.md)
 - [Cluster de l'atelier](./clustertp.md)
 - [Metabolomics Semantic Datalake](./msd.md)
 
-L'idéal est de réaliser le développement et les tests sur votre machine personnelle puis de lancer le traitement sur le cluster.
-
-Pour l'environnement de travail, il faut se référer aux [prérequis](./prerequisites.md).
-
-
 ## Traitement sur un jeu de données test
 
 Nous allons travailler a partir d'un jeu de données test qui se trouve dans [rdf-files-test](https://github.com/p2m2/tp-big-data-scala-spark-sansa/tree/main/rdf-files-test)
 
-### Exécutez un  sbt-shell pour travailler sur ce jeu de données
 
 ### Exécution du traitement
 

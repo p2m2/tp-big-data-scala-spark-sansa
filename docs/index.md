@@ -92,12 +92,10 @@ resultsDF.map( row => (row.get(0).toString,row.get(2).toString,row.get(0).toStri
 resultsDF.write.parquet("./results/compound_taxon.parquet")
 ```
 
-#### Inspectez le resultat *./results/compound_taxon.parquet* . Combien de couple composé/taxon est enregistré ?
+#### Inspectez le resultat *./results/compound_taxon.parquet* . Combien de couples composé/taxon sont enregistrés ?
 
 - via *ls/cat* ou *hdfs dfs -ls/cat*
 - via *spark-shell / spark.read.load("./results/compound_taxon.parquet").count*
-
-#### Inspectez le spark-history
 
 ### B - Intégration du code dans une application spark
 
@@ -107,11 +105,9 @@ resultsDF.write.parquet("./results/compound_taxon.parquet")
 
 Les fichiers sont localisés sur le stockage hdfs dans le répertoire */rdf*.
 
-:information_source: [documentation hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
-
 #### Verifiez la structure des fichiers avec la command head
 
-#### Archive du TP
+#### Récuperez l'archive du TP sur votre machine locale (idéalement sinon travailler directement sur le cluster)
 
 Récuperez [l'archive template du tp](https://github.com/p2m2/tp-big-data-scala-spark-sansa/archive/refs/heads/main.zip) 
 
@@ -124,5 +120,13 @@ sbt assembly
 ```
 
 #### Générez l'assemblage du jar pour un test en local 
-#### Générez l'assemblage du jar pour un test sur le cluster
+#### Générez l'assemblage du jar et copiez le jar sur le cluster pour un test sur le jeux de données réel
 
+#### Inspectez le resultat *./results/compound_taxon.parquet* . Combien de couples composé/taxon sont enregistrés ?
+
+
+
+## Liens
+
+- [github du tp](https://github.com/p2m2/tp-big-data-scala-spark-sansa/)
+- [documentation hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)

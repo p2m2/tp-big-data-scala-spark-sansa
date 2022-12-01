@@ -42,7 +42,7 @@ Avec l'utilisation de [Sansa](http://sansa-stack.github.io/SANSA-Stack/), il s'a
  - 1) créer un *Dataset* pour chaque fichier RDF ;
  - 2) créer un *Dataset* commun qui fusionne les trois *Datasets* ;
  - 3) exécuter une requete SPARQL sur ce dernier *Dataset* ;
- - 4) sauvegarder les resultat au format parquet sur le cluster hdfs .
+ - 4) sauvegarder les resultats au format parquet sur le cluster hdfs .
   
 
 ```scala

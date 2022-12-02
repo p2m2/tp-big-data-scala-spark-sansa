@@ -42,7 +42,7 @@ Avec l'utilisation de [Sansa](http://sansa-stack.github.io/SANSA-Stack/), il s'a
  - 1) créer un *Dataset* pour chaque fichier RDF ;
  - 2) créer un *Dataset* commun qui fusionne les trois *Datasets* ;
  - 3) exécuter une requete SPARQL sur ce dernier *Dataset* ;
- - 4) sauvegarder les resultats au format parquet sur le cluster hdfs .
+ - 4) sauvegarder les resultats au format parquet sur le cluster hdfs dans le repertoire "./results/compound_taxon.parquet" .
   
 
 ```scala
@@ -75,21 +75,8 @@ WHERE {
     ?taxon skos:closeMatch ?mesh .
 }
 """
+val sparqlFrame =...
 
-import net.sansa_stack.ml.spark.featureExtraction.SparqlFrame
-import net.sansa_stack.query.spark.SPARQLEngine
-
-val sparqlFrame =
-new SparqlFrame()
-  .setSparqlQuery(query)
-  .setQueryExcecutionEngine(SPARQLEngine.Sparqlify)
-
-val resultsDF : DataFrame = sparqlFrame.transform(triplesDataset)
-
-//Affichage
-resultsDF.map( row => (row.get(0).toString,row.get(2).toString,row.get(0).toString,row.get(3).toString) ).take(1)
-
-resultsDF.write.parquet("./results/compound_taxon.parquet")
 ```
 
 #### Inspectez le resultat *./results/compound_taxon.parquet* . Combien de couples composé/taxon sont enregistrés ?

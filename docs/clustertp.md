@@ -1,7 +1,9 @@
 # Cluster de l'atelier
 ## Accès aux interfaces
 
-ssh *login*@    
+```
+ssh <login>@147.100.202.42    
+```
 
 ## Execution de la commande interactive spark-shell
 [index](./index.md)

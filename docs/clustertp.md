@@ -16,7 +16,7 @@ spark-shell \
  --master yarn \
  --conf "spark.yarn.appMasterEnv.JAVA_HOME=/usr/lib/jvm/jdk-12.0.2+10/" \
  --conf "spark.executorEnv.JAVA_HOME=/usr/lib/jvm/jdk-12.0.2+10/" \
- --conf "spark.serializer=org.apache.spark.serializer.KryoSerializer"  \
+ --conf "spark.serializer=org.apache.spark.serializer.KryoSerializer,net.sansa_stack.query.spark.ontop.OntopKryoRegistrator,net.sansa_stack.query.spark.sparqlify.KryoRegistratorSparqlify"  \
  --conf "spark.sql.crossJoin.enabled=true"   \
  --conf "spark.kryo.registrator=net.sansa_stack.rdf.spark.io.JenaKryoRegistrator"  \
  --conf "spark.kryoserializer.buffer.max=2000" \

@@ -25,7 +25,7 @@ mkdir /tmp/spark-events
 /usr/local/share/spark/bin/spark-shell \
   --conf "spark.eventLog.enabled=true" \
   --conf "spark.eventLog.dir=file:///tmp/spark-events"  \
-  --conf "spark.serializer=org.apache.spark.serializer.KryoSerializer" \
+  --conf "spark.serializer=org.apache.spark.serializer.KryoSerializer,net.sansa_stack.query.spark.ontop.OntopKryoRegistrator,net.sansa_stack.query.spark.sparqlify.KryoRegistratorSparqlify" \
   --conf "spark.sql.crossJoin.enabled=true" \
   --conf "spark.kryo.registrator=net.sansa_stack.rdf.spark.io.JenaKryoRegistrator" \
   --conf "spark.kryoserializer.buffer.max=2000" \

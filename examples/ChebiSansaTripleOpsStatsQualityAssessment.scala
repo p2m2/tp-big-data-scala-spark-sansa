@@ -8,7 +8,7 @@ val triplesChebi = spark.rdf(Lang.RDFXML)(path)
 
 // count -> res0: Long = 5981144
 
-val parallelism : Int = 4
+
 
 // RDF Triple Ops
 // ------------
@@ -40,7 +40,15 @@ import net.sansa_stack.rdf.spark.stats._
 val rdf_stats_prop_dist = triplesChebi.statsPropertyUsage()
 
 rdf_stats_prop_dist.take(5)
-//res13: Array[(org.apache.jena.graph.Node, Int)] = Array((http://www.w3.org/2000/01/rdf-schema#subClassOf,322738), (http://www.geneontology.org/formats/oboInOwl#hasAlternativeId,18515), (http://www.geneontology.org/formats/oboInOwl#date,1), (http://www.geneontology.org/formats/oboInOwl#hasOBONamespace,161792), (http://www.w3.org/2000/01/rdf-schema#subPropertyOf,6))
+/*
+res13: Array[(org.apache.jena.graph.Node, Int)] = 
+Array(
+ (http://www.w3.org/2000/01/rdf-schema#subClassOf,322738), 
+ (http://www.geneontology.org/formats/oboInOwl#hasAlternativeId,18515), 
+ (http://www.geneontology.org/formats/oboInOwl#date,1), 
+ (http://www.geneontology.org/formats/oboInOwl#hasOBONamespace,161792), 
+ (http://www.w3.org/2000/01/rdf-schema#subPropertyOf,6))
+*/
 
 // RDF Quality Assessment 
 
@@ -73,6 +81,9 @@ Unit
 
 
 // Inference
+import net.sansa_stack.inference.spark.forwardchaining.triples.ForwardRuleReasonerOWLHorst
+
+val parallelism : Int = 4
 val reasoner=new ForwardRuleReasonerOWLHorst(spark.sparkContext,parallelism)
-val inferredTriples = reasoner.apply(triples)
+val inferredTriples = reasoner.apply(triplesChebi)
 

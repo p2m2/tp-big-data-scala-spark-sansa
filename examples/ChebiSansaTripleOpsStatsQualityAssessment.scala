@@ -83,7 +83,12 @@ Unit
 // Inference
 import net.sansa_stack.inference.spark.forwardchaining.triples.ForwardRuleReasonerOWLHorst
 
-val parallelism : Int = 4
-val reasoner=new ForwardRuleReasonerOWLHorst(spark.sparkContext,parallelism)
-val inferredTriples = reasoner.apply(triplesChebi)
+// 1 executor - val parallelism : Int = 24, val repartitionNum = 500 => 10:45 -> ??
+// 8 executor - val parallelism : Int = 160, val repartitionNum = 500 => 10:55 -> ??
 
+val parallelism : Int = 160
+val repartitionNum : Int = 500
+val triplesChebiRep = triplesChebi.repartition(repartitionNum)
+val reasoner=new ForwardRuleReasonerOWLHorst(spark.sparkContext,parallelism)
+val inferredTriples = reasoner.apply(triplesChebiRep)
+inferredTriples.saveAsNTriplesFile("/rdf-test/test-chebi.nt")

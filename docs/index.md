@@ -124,4 +124,5 @@ sbt assembly
 - Etat des workers : `yarn node -list -all`
 - Process en cours : `yarn top`
 - List des jobs : `yarn application -list`
-- Log d'un job : `yarn logs -applicationId application_<XXXX>`
+- Log job : `yarn logs -applicationId application_<XXXX>`
+- kill job : `yarn application -kill application_<XXXX>`

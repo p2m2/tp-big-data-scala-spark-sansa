@@ -7,12 +7,6 @@
 ssh <login>@147.100.202.42    
 ```
 
-### Cluster IdF
-
-```
-ssh <login>@138.102.223.150   
-```
-
 ## Execution de la commande interactive spark-shell
 [index](./index.md)
 

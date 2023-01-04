@@ -33,22 +33,26 @@ Il faut se référer à la partie ["installation"](./prerequisites.md) si vous s
 Nous allons travailler a partir d'un jeu de données test qui se trouve dans [rdf-files-test](https://github.com/p2m2/tp-big-data-scala-spark-sansa/tree/main/rdf-files-test)
 
 
-### Workflow d'exécution
+### TP
 
-Avec l'utilisation de [Sansa](http://sansa-stack.github.io/SANSA-Stack/), il s'agit ici de : 
-
- - 1) créer un [*Dataset*](https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/sql/Dataset.html) pour chaque fichier RDF ;
- - 2) créer un [*Dataset*](https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/sql/Dataset.html) commun qui fusionne les trois *Datasets* ;
- - 3) exécuter une requete SPARQL sur ce dernier *Dataset* ;
- - 4) sauvegarder les resultats au format parquet sur le cluster hdfs dans le repertoire "./results/compound_taxon.parquet" .
-  
 #### I) Téléchargez le jeux de données puis transferez ces données sur le stockage HDFS  
 #### II) lancez un spark-shell en initialisant votre environnement avec la librairie Sansa
 ##### a) Utilisez la méthode *find* pour extraire le nombre de triplets contenant le prédicat *"http://id.nlm.nih.gov/mesh/vocab#concept"* sur le graphe *mesh_test.nt*.
 ##### b) Retrouvez cette information en utilisant *statsPropertyUsage*
 ##### c) En utilisant le package [QualityAssessment](./qualityassessment.md), et les ressources (/rdf/mesh.nt.gz et /rdf/vocabulary_1.0.0.ttl), déterminez :
- - Le ratio entre le nombre d'uri (sujet/predicat/objet) de type HashUri (contenant "#") et le nombre de triplet
- - le ratio du nombre de ressource (sujet/predicat/objet) qui est libéllée
+ 
+ - *Le ratio entre le nombre d'uri (sujet/predicat/objet) de type HashUri (contenant "#") et le nombre de triplet*
+ - *le ratio du nombre de ressource (sujet/predicat/objet) qui est libéllée*
+
+
+Dans la suite du TP, il s'agira de :
+
+- créer un [*Dataset*](https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/sql/Dataset.html) pour chaque fichier RDF ;
+- créer un [*Dataset*](https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/sql/Dataset.html) commun qui fusionne les trois *Datasets* ;
+- exécuter une requete SPARQL sur ce dernier *Dataset* ;
+- sauvegarder les resultats au format parquet sur le cluster hdfs dans le repertoire "./results/compound_taxon.parquet" .
+
+
 #### III) Créer un RDD pour chaque graphe RDF
 #### IV) Fusionnez les RDD en un unique RDD
 #### V) Appliquez la requete SPARQL suivante sur le RDD fusionné en utilisant *net.sansa_stack.query.spark.sparqlify.QueryEngineFactorySparqlify* et afficher le résultat

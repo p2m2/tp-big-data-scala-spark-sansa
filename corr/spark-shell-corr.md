@@ -16,10 +16,9 @@ export JAVA_HOME=/usr/lib/jvm/jdk-12.0.2+10/
 spark-shell  --name TP  --master yarn  --conf "spark.yarn.appMasterEnv.JAVA_HOME=/usr/lib/jvm/jdk-12.0.2+10/"  --conf "spark.executorEnv.JAVA_HOME=/usr/lib/jvm/jdk-12.0.2+10/"  --conf "spark.serializer=org.apache.spark.serializer.KryoSerializer"   --conf "spark.kryo.registrator=net.sansa_stack.rdf.spark.io.JenaKryoRegistrator,net.sansa_stack.query.spark.ontop.OntopKryoRegistrator,net.sansa_stack.query.spark.sparqlify.KryoRegistratorSparqlify"   --executor-memory 4G  --num-executors 4   --jars /usr/share/java/sansa-stack-spark_2.12-0.8.0-RC3-SNAPSHOT-jar-with-dependencies.jar
 ```
 
-## Filtre sur un prédicat d'un graphe 
+## Extraction du nombre de triplets contenant le prédicat "http://id.nlm.nih.gov/mesh/vocab#concept" en utilisant find
 
 ```scala
-
 val meshPath : String ="rdf-files-test/mesh_test.nt"
 
 import net.sansa_stack.rdf.spark.io.RDFReader
@@ -32,6 +31,37 @@ import net.sansa_stack.rdf.spark.model._
 val triples = spark.rdf(Lang.NT)(meshPath)
 val triplesFiltered : RDD[Triple]= triples.find(None,Some(NodeFactory.createURI("http://id.nlm.nih.gov/mesh/vocab#concept")),None)
 triplesFiltered.distinct.count() //6
+```
+
+## Extraction du nombre de triplets contenant le prédicat "http://id.nlm.nih.gov/mesh/vocab#concept" en utilisant statsPropertyUsage
+
+```scala
+import net.sansa_stack.rdf.spark.stats._
+
+triples.statsPropertyUsage()
+triples.statsPropertyUsage().filter(_._1.getURI() == "http://id.nlm.nih.gov/mesh/vocab#concept").collect()
+```
+
+## Quality Assessment
+
+```shell
+wget -q -O - https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/mesh.nt.gz | gunzip -c | hdfs dfs -put - ./mesh.nt
+wget -q -O - https://nlmpubs.nlm.nih.gov/projects/mesh/rdf/vocabulary_1.0.0.ttl | hdfs dfs -put - ./vocabulary_1.0.0.ttl
+```
+
+```scala
+import net.sansa_stack.rdf.spark.io.RDFReader
+import org.apache.jena.riot.Lang
+import org.apache.jena.graph.Triple
+import org.apache.spark.rdd.RDD
+import net.sansa_stack.rdf.spark.qualityassessment._
+import scala.util.Try
+
+val triples : RDD[Triple] = spark.rdf(Lang.RDFXML)("./mesh.nt").union(spark.rdf(Lang.TURTLE)("./vocabulary_1.0.0.ttl"))
+
+val q = QualityAssessmentOperations(triples)
+q.assessNoHashUris()
+q.assessLabeledResources()
 ```
 
 ## Traitement Chargement dans un RDD[Triple] et requete SPARQL dans le spark-shell

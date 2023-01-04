@@ -44,8 +44,13 @@ Avec l'utilisation de [Sansa](http://sansa-stack.github.io/SANSA-Stack/), il s'a
   
 #### I) Téléchargez le jeux de données puis transferez ces données sur le stockage HDFS  
 #### II) lancez un spark-shell en initialisant votre environnement avec la librairie Sansa
-#### III) Créer un RDD pour chaque graphe RDF 
-#### IV) Fusionnez les Datasets en un unique RDD
+##### a) Utilisez la méthode *find* pour extraire le nombre de triplets contenant le prédicat *"http://id.nlm.nih.gov/mesh/vocab#concept"* sur le graphe *mesh_test.nt*.
+##### b) Retrouvez cette information en utilisant *statsPropertyUsage*
+##### c) En utilisant le package [QualityAssessment](./qualityassessment.md), et les ressources (/rdf/mesh.nt.gz et /rdf/vocabulary_1.0.0.ttl), déterminez :
+ - Le ratio entre le nombre d'uri (sujet/predicat/objet) de type HashUri (contenant "#") et le nombre de triplet
+ - le ratio du nombre de ressource (sujet/predicat/objet) qui est libéllée
+#### III) Créer un RDD pour chaque graphe RDF
+#### IV) Fusionnez les RDD en un unique RDD
 #### V) Appliquez la requete SPARQL suivante sur le RDD fusionné en utilisant *net.sansa_stack.query.spark.sparqlify.QueryEngineFactorySparqlify* et afficher le résultat
 
 ```scala
@@ -68,7 +73,7 @@ WHERE {
 """
 ```
 
-#### VI) réitérez à partir de II) en utilisant des *org.apache.spark.sql.Dataset* et l'objet *net.sansa_stack.ml.spark.featureExtraction.SparqlFrame* de Sansa  
+#### VI) réitérez à partir de III) en utilisant des *org.apache.spark.sql.Dataset* et l'objet *net.sansa_stack.ml.spark.featureExtraction.SparqlFrame* de Sansa  
 
 #### Inspectez le resultat *./results/compound_taxon.parquet* . Combien de couples composé/taxon sont enregistrés ?
 

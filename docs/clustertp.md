@@ -16,7 +16,13 @@ ssh <login>@138.102.223.150
 ## Execution de la commande interactive spark-shell
 [index](./index.md)
 
-Il faut adapter les options "executor-memory" et "num-executors"
+### Activer l'environnement Java compatible avec Sansa
+
+```
+export JAVA_HOME=/usr/lib/jvm/jdk-12.0.2+10/
+```
+
+*Il faut adapter les options "executor-memory" et "num-executors"*
 
 ```shell
 spark-shell \

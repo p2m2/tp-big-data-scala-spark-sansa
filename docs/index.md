@@ -10,24 +10,22 @@ Pour mettre au point la méthode nous utiliserons un [spark-shell](https://spark
 
 ## Sujet
 
-Associer un composé du projet [FORUM](https://forum-webapp.semantic-metabolomics.fr/#/about) avec un [PubChem/Taxonomy](https://pubchem.ncbi.nlm.nih.gov/source/22056) .
+Associer un composé référencé dans le projet [FORUM](https://forum-webapp.semantic-metabolomics.fr/#/about) avec un [PubChem/Taxonomy](https://pubchem.ncbi.nlm.nih.gov/source/22056) .
 
 ![fig1](./img/fig1.png)
 
 [Les données RDF](./databases.md)
 
 
-### A - Utilisation d'un  sbt-shell pour travailler sur le jeu de données test
+### A - Utilisation d'un  spark-shell pour travailler sur le jeu de données test
 
-L'idéal est de réaliser le développement et les tests sur votre machine personnelle puis de lancer le traitement sur le cluster avec les données réelles.
-
-Il faut se référer à la partie ["installation"](./prerequisites.md) si vous souhaitez travailler dans un envvironnement de développement personnel ou sur une machine virtuelle instanciée à partir d'un cloud académique ([orion](https://orion.cloud.inrae.fr/) ou [genostack](https://genostack.genouest.org/) par exemple).
+Il faut se référer à la partie ["installation"](./prerequisites.md) si vous souhaitez travailler dans un environnement de développement personnel ou sur une machine virtuelle instanciée à partir d'un cloud académique ([orion](https://orion.cloud.inrae.fr/) ou [genostack](https://genostack.genouest.org/) par exemple).
 
 
 #### Les plateformes d'exécution
 
-- [Local/Cloud Orion/Cloud Genostack](./local.md)
 - [Cluster de l'atelier](./clustertp.md)
+- [Local/Cloud Orion/Cloud Genostack](./local.md)
 - [Metabolomics Semantic Datalake](./msd.md)
 
 #### Traitement sur un jeu de données test
@@ -35,29 +33,22 @@ Il faut se référer à la partie ["installation"](./prerequisites.md) si vous s
 Nous allons travailler a partir d'un jeu de données test qui se trouve dans [rdf-files-test](https://github.com/p2m2/tp-big-data-scala-spark-sansa/tree/main/rdf-files-test)
 
 
-### Exécution du traitement
+### Workflow d'exécution
 
 Avec l'utilisation de [Sansa](http://sansa-stack.github.io/SANSA-Stack/), il s'agit ici de : 
 
- - 1) créer un *Dataset* pour chaque fichier RDF ;
- - 2) créer un *Dataset* commun qui fusionne les trois *Datasets* ;
+ - 1) créer un [*Dataset*](https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/sql/Dataset.html) pour chaque fichier RDF ;
+ - 2) créer un [*Dataset*](https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/sql/Dataset.html) commun qui fusionne les trois *Datasets* ;
  - 3) exécuter une requete SPARQL sur ce dernier *Dataset* ;
  - 4) sauvegarder les resultats au format parquet sur le cluster hdfs dans le repertoire "./results/compound_taxon.parquet" .
   
+#### I) Téléchargez le jeux de données puis transferez ces données sur le stockage HDFS  
+#### II) lancez un spark-shell en initialisant votre environnement avec la librairie Sansa
+#### III) Créer un RDD pour chaque graphe RDF 
+#### IV) Fusionnez les Datasets en un unique RDD
+#### V) Appliquez la requete SPARQL suivante sur le RDD fusionné en utilisant *net.sansa_stack.query.spark.sparqlify.QueryEngineFactorySparqlify* et afficher le résultat
 
 ```scala
-val taxonomyPath="rdf-files-test/pc_taxonomy_test.ttl"
-val meshPath="rdf-files-test/mesh_test.nt"
-val assoforumChebiMesh="rdf-files-test/triples_assos_chebi_mesh_test.ttl"
-
-import net.sansa_stack.rdf.spark.io.RDFReader
-import net.sansa_stack.rdf.spark.model.TripleOperations
-import org.apache.jena.graph.Triple
-import org.apache.jena.riot.Lang
-import org.apache.spark.sql.{Dataset, DataFrame, Encoder, Encoders}
-
-val triplesDataset : Dataset[Triple] = spark.rdf(Lang.TURTLE)(taxonomyPath).toDS().union(spark.rdf(Lang.NT)(meshPath).toDS()).union(spark.rdf(Lang.TURTLE)(assoforumChebiMesh).toDS())
-
 val query = """ 
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -75,9 +66,9 @@ WHERE {
     ?taxon skos:closeMatch ?mesh .
 }
 """
-val sparqlFrame =...
-
 ```
+
+#### VI) réitérez à partir de II) en utilisant des *org.apache.spark.sql.Dataset* et l'objet *net.sansa_stack.ml.spark.featureExtraction.SparqlFrame* de Sansa  
 
 #### Inspectez le resultat *./results/compound_taxon.parquet* . Combien de couples composé/taxon sont enregistrés ?
 
@@ -128,4 +119,4 @@ sbt assembly
 - kill job : `yarn application -kill application_<XXXX>`
 - Etat courant d'un job : `yarn app -status  application_<XXXX>`
 - Liste des noeuds utilisés : `yarn node -list`, `yarn node -list --showDetails`
-- Utilisation du cluster : `yarn queue -status default`
+- Taux d'utilisation du cluster : `yarn queue -status default`

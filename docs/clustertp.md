@@ -1,8 +1,16 @@
 # Cluster de l'atelier
 ## Accès aux interfaces
 
+### Cluster occitanie
+
 ```
 ssh <login>@147.100.202.42    
+```
+
+### Cluster IdF
+
+```
+ssh <login>@138.102.223.150   
 ```
 
 ## Execution de la commande interactive spark-shell
@@ -16,11 +24,8 @@ spark-shell \
  --master yarn \
  --conf "spark.yarn.appMasterEnv.JAVA_HOME=/usr/lib/jvm/jdk-12.0.2+10/" \
  --conf "spark.executorEnv.JAVA_HOME=/usr/lib/jvm/jdk-12.0.2+10/" \
- --conf "spark.serializer=org.apache.spark.serializer.KryoSerializer,net.sansa_stack.query.spark.ontop.OntopKryoRegistrator,net.sansa_stack.query.spark.sparqlify.KryoRegistratorSparqlify"  \
- --conf "spark.sql.crossJoin.enabled=true"   \
- --conf "spark.kryo.registrator=net.sansa_stack.rdf.spark.io.JenaKryoRegistrator"  \
- --conf "spark.kryoserializer.buffer.max=2000" \
- --conf spark.sql.shuffle.partitions="300" \
+ --conf "spark.serializer=org.apache.spark.serializer.KryoSerializer"  \
+ --conf "spark.kryo.registrator=net.sansa_stack.rdf.spark.io.JenaKryoRegistrator,net.sansa_stack.query.spark.ontop.OntopKryoRegistrator,net.sansa_stack.query.spark.sparqlify.KryoRegistratorSparqlify"  \
  --executor-memory 4G \
  --num-executors 4  \
  --jars /usr/share/java/sansa-stack-spark_2.12-0.8.0-RC3-SNAPSHOT-jar-with-dependencies.jar

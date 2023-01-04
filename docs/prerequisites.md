@@ -55,6 +55,9 @@ git clone https://github.com/SANSA-Stack/SANSA-Stack.git
 cd SANSA-Stack
 sh ./dev/make_spark_dist.sh 
 ```
+Le jar suivant est généré :
+`./sansa-stack/sansa-stack-spark/target/sansa-stack-spark_2.12-X.Y.Z-SNAPSHOT-jar-with-dependencies.jar`
+
 
 ### EDI
 

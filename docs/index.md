@@ -126,3 +126,6 @@ sbt assembly
 - List des jobs : `yarn application -list`
 - Log job : `yarn logs -applicationId application_<XXXX>`
 - kill job : `yarn application -kill application_<XXXX>`
+- Etat courant d'un job : `yarn app -status  application_<XXXX>`
+- Liste des noeuds utilisés : `yarn node -list`, `yarn node -list --showDetails`
+- Utilisation du cluster : `yarn queue -status default`

@@ -57,11 +57,10 @@ import org.apache.spark.rdd.RDD
 import net.sansa_stack.rdf.spark.qualityassessment._
 import scala.util.Try
 
-val triples : RDD[Triple] = spark.rdf(Lang.RDFXML)("./mesh.nt").union(spark.rdf(Lang.TURTLE)("./vocabulary_1.0.0.ttl"))
+val triples : RDD[Triple] = spark.rdf(Lang.NT)("./mesh.nt").union(spark.rdf(Lang.TURTLE)("./vocabulary_1.0.0.ttl"))
 
 val q = QualityAssessmentOperations(triples)
 q.assessNoHashUris()
-q.assessLabeledResources()
 ```
 
 ## Traitement Chargement dans un RDD[Triple] et requete SPARQL dans le spark-shell

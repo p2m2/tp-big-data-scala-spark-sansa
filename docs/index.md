@@ -41,9 +41,7 @@ Nous allons travailler a partir d'un jeu de données test qui se trouve dans [rd
 ##### b) Retrouvez cette information en utilisant *statsPropertyUsage*
 ##### c) En utilisant le package [QualityAssessment](./qualityassessment.md), et les ressources (/rdf/mesh.nt.gz et /rdf/vocabulary_1.0.0.ttl), déterminez :
  
- - *Le ratio entre le nombre d'uri (sujet/predicat/objet) de type HashUri (contenant "#") et le nombre de triplet*
- - *le ratio du nombre de ressource (sujet/predicat/objet) qui est libéllée*
-
+ - *Le ratio entre le nombre d'uri (sujet/predicat/objet) de type HashUri (contenant "#") et le nombre de triplet* (note: ne nécessite pas une recompilation de sansa)
 
 Dans la suite du TP, il s'agira de :
 
@@ -117,6 +115,7 @@ sbt assembly
 
 - [github du tp](https://github.com/p2m2/tp-big-data-scala-spark-sansa/)
 - [documentation hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+- [Documentation SANSA Stack](http://sansa-stack.github.io/SANSA-Stack/)
 
 
 ## Commandes YARN

@@ -52,3 +52,5 @@ spark-submit \
 ```
 ssh -f <login>@147.100.202.42 -L 18081:localhost:18080 -N
 ```
+
+[Spark History](http://localhost:18081/)

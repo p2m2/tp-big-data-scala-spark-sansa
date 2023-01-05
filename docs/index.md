@@ -84,11 +84,11 @@ WHERE {
 
 #### III) Récuperez l'archive du TP sur votre machine locale (idéalement sinon travailler directement sur le cluster) [l'archive template du tp](https://github.com/p2m2/tp-big-data-scala-spark-sansa/archive/refs/heads/main.zip) 
 
-#### IV) Intégrez dans la classe Main le traitement de la partie B.
+#### IV) Intégrez dans la classe Main (*src/main/scala/fr/inrae/bigdata/tp/Main.scala*) le traitement de la partie B.
 
-#### V) Assemblez le Jar de votre application en utilisant *sbt assemby* pour le jeu de donnée test
+#### V) Assemblez le Jar de votre application en utilisant *sbt assemby*. Lancez le traitement sur le jeu de donnée test
  
-#### VI) Assemblez le Jar de votre application en utilisant *sbt assemby* pour le jeu de donnée du repertoire hdfs */rdf*
+#### VI) Assemblez le Jar de votre application en utilisant *sbt assemby*. Lancez le traitement le jeu de donnée du repertoire hdfs */rdf*
 
 #### VII Inspectez le resultat *./results/compound_taxon.parquet* . Combien de couples composé/taxon sont enregistrés ?
 

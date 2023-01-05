@@ -44,8 +44,11 @@ spark-submit \
  --executor-memory 4G \
  --num-executors 4  \
  --jars /usr/share/java/sansa-stack-spark_2.12-0.8.0-RC3-SNAPSHOT-jar-with-dependencies.jar <path/tp.jar>
-
 ```   
+
+possibilité d'ajouter l'option ` --conf spark.yarn.submit.waitAppCompletion="false"` pour le mode batch.
+
+
 
 ## Redirection du Spark history sur la machine locale
 

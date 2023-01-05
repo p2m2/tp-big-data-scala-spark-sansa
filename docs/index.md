@@ -90,9 +90,9 @@ WHERE {
  
 #### VI) Assemblez le Jar de votre application en utilisant *sbt assemby*. Lancez le traitement le jeu de donnée du repertoire hdfs */rdf*
 
-#### VII Inspectez le resultat *./results/compound_taxon.parquet* . Combien de couples composé/taxon sont enregistrés ?
+#### VII) Inspectez le resultat *./results/compound_taxon.parquet* . Combien de couples composé/taxon sont enregistrés ?
 
-
+#### VIII) Visualisez le Spark History via [un pont ssh](./clustertp.md) 
 ## Liens
 
 - [github du tp](https://github.com/p2m2/tp-big-data-scala-spark-sansa/)

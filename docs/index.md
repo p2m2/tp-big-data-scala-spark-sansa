@@ -43,11 +43,11 @@ Nous allons travailler a partir d'un jeu de données test qui se trouve dans [rd
  
  - *Le ratio entre le nombre d'uri (sujet/predicat/objet) de type HashUri (contenant "#") et le nombre de triplet* (note: ne nécessite pas une recompilation de sansa)
 
-### Partie B - Appliquer une requête SPARQL sur plueirus graphes RDF
+### Partie B - Appliquer une requête SPARQL sur plusieurs graphes RDF
 
-#### III) Créer un RDD pour chaque graphe RDF
-#### IV) Fusionnez les RDD en un unique RDD
-#### V) Appliquez la requete SPARQL suivante sur le RDD fusionné en utilisant *net.sansa_stack.query.spark.sparqlify.QueryEngineFactorySparqlify* et afficher le résultat
+#### I) Créer un RDD pour chaque graphe RDF
+#### II) Fusionnez les RDD en un unique RDD
+#### III) Appliquez la requete SPARQL suivante sur le RDD fusionné en utilisant *net.sansa_stack.query.spark.sparqlify.QueryEngineFactorySparqlify* et afficher le résultat
 
 ```scala
 val query = """ 
@@ -69,11 +69,11 @@ WHERE {
 """
 ```
 
-#### VI) réitérez à partir de III) en utilisant des *org.apache.spark.sql.Dataset* et l'objet *net.sansa_stack.ml.spark.featureExtraction.SparqlFrame* de Sansa  
+#### IV) réitérez à partir de I) en utilisant des *org.apache.spark.sql.Dataset* et l'objet *net.sansa_stack.ml.spark.featureExtraction.SparqlFrame* de Sansa  
 
-#### VII) Créez un fichier au format parquet *./results/compound_taxon.parquet* .
+#### V) Créez un fichier au format parquet *./results/compound_taxon.parquet* .
 
-#### VIII) Combien de couples composé/taxon sont enregistrés ?
+#### VI) Combien de couples composé/taxon sont enregistrés ?
 ##### a) en utilisant une commande yarn
 ##### b) en utilisant un nouveau spark-shell
 

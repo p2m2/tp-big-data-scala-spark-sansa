@@ -155,10 +155,18 @@ val resultsDF : DataFrame = sparqlFrame.transform(triplesDataset)
 resultsDF.select("compound","prop","mesh","taxon").collect()
 ```
 
+# Creation du fichier au format Apache parquet 
 
-```
-//Affichage
-resultsDF.map( row => (row.get(0).toString,row.get(2).toString,row.get(0).toString,row.get(3).toString) ).take(1)
-
+```scala
 resultsDF.write.parquet("./results/compound_taxon.parquet")
+```
+
+# Inspection du fichier via une commande yarn
+
+via hdfs dfs -ls/cat
+
+# Inspection du fichier vi spark-shell
+
+```scala
+spark.read.load("./results/compound_taxon.parquet").count
 ```

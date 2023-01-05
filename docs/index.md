@@ -33,7 +33,7 @@ Il faut se référer à la partie ["installation"](./prerequisites.md) si vous s
 Nous allons travailler a partir d'un jeu de données test qui se trouve dans [rdf-files-test](https://github.com/p2m2/tp-big-data-scala-spark-sansa/tree/main/rdf-files-test)
 
 
-### TP
+### Partie A - Manipulation des graphes RDF
 
 #### I) Téléchargez le jeux de données puis transferez ces données sur le stockage HDFS  
 #### II) lancez un spark-shell en initialisant votre environnement avec la librairie Sansa
@@ -43,13 +43,7 @@ Nous allons travailler a partir d'un jeu de données test qui se trouve dans [rd
  
  - *Le ratio entre le nombre d'uri (sujet/predicat/objet) de type HashUri (contenant "#") et le nombre de triplet* (note: ne nécessite pas une recompilation de sansa)
 
-Dans la suite du TP, il s'agira de :
-
-- créer un [*Dataset*](https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/sql/Dataset.html) pour chaque fichier RDF ;
-- créer un [*Dataset*](https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/sql/Dataset.html) commun qui fusionne les trois *Datasets* ;
-- exécuter une requete SPARQL sur ce dernier *Dataset* ;
-- sauvegarder les resultats au format parquet sur le cluster hdfs dans le repertoire "./results/compound_taxon.parquet" .
-
+### Partie B - Appliquer une requête SPARQL sur plueirus graphes RDF
 
 #### III) Créer un RDD pour chaque graphe RDF
 #### IV) Fusionnez les RDD en un unique RDD
@@ -67,7 +61,7 @@ PREFIX mesh: <http://id.nlm.nih.gov/mesh/>
 
 SELECT ?compound ?prop ?mesh ?taxon
 WHERE {
-	?compound skos:related ?descriptor .
+    ?compound skos:related ?descriptor .
     ?descriptor ?prop ?mesh .
     FILTER ( ?prop=meshv:concept || ?prop=meshv:preferredConcept )
     ?taxon skos:closeMatch ?mesh .
@@ -77,38 +71,26 @@ WHERE {
 
 #### VI) réitérez à partir de III) en utilisant des *org.apache.spark.sql.Dataset* et l'objet *net.sansa_stack.ml.spark.featureExtraction.SparqlFrame* de Sansa  
 
-#### Inspectez le resultat *./results/compound_taxon.parquet* . Combien de couples composé/taxon sont enregistrés ?
+#### VII) Créez un fichier au format parquet *./results/compound_taxon.parquet* .
 
-- via *ls/cat* ou *hdfs dfs -ls/cat*
-- via *spark-shell / spark.read.load("./results/compound_taxon.parquet").count*
+#### VIII) Combien de couples composé/taxon sont enregistrés ?
+##### a) en utilisant une commande yarn
+##### b) en utilisant un nouveau spark-shell
 
-### B - Intégration du code dans une application spark
+### Part C - Intégration du code dans une application spark
 
-#### Connectez vous au cluster Big Data
+#### I) Reperez les fichiers RDF sur le cluster, inspectez avec les commandes yarn le repertoire */rdf/*
+#### II) Verifiez la structure des fichiers avec la command head de yarn
 
-#### Reperez les fichiers RDF sur le cluster (commande hdfs)
+#### III) Récuperez l'archive du TP sur votre machine locale (idéalement sinon travailler directement sur le cluster) [l'archive template du tp](https://github.com/p2m2/tp-big-data-scala-spark-sansa/archive/refs/heads/main.zip) 
 
-Les fichiers sont localisés sur le stockage hdfs dans le répertoire */rdf*.
+#### IV) Intégrez dans la classe Main le traitement de la partie B.
 
-#### Verifiez la structure des fichiers avec la command head
+#### V) Assemblez le Jar de votre application en utilisant *sbt assemby* pour le jeu de donnée test
+ 
+#### VI) Assemblez le Jar de votre application en utilisant *sbt assemby* pour le jeu de donnée du repertoire hdfs */rdf*
 
-#### Récuperez l'archive du TP sur votre machine locale (idéalement sinon travailler directement sur le cluster)
-
-Récuperez [l'archive template du tp](https://github.com/p2m2/tp-big-data-scala-spark-sansa/archive/refs/heads/main.zip) 
-
-#### Intégrez dans la classe Main le traitement
-
-#### Assemblage du Jar
-
-```shell
-sbt assembly
-```
-
-#### Générez l'assemblage du jar pour un test en local 
-#### Générez l'assemblage du jar et copiez le jar sur le cluster pour un test sur le jeux de données réel
-
-#### Inspectez le resultat *./results/compound_taxon.parquet* . Combien de couples composé/taxon sont enregistrés ?
-
+#### VII Inspectez le resultat *./results/compound_taxon.parquet* . Combien de couples composé/taxon sont enregistrés ?
 
 
 ## Liens

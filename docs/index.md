@@ -79,20 +79,27 @@ WHERE {
 
 ### Part C - Intégration du code dans une application spark
 
-#### I) Reperez les fichiers RDF sur le cluster, inspectez avec les commandes yarn le repertoire */rdf/*
-#### II) Verifiez la structure des fichiers avec la command head de yarn
+#### I) Consultation des fichiers sources sur le cluster/datalake
 
-#### III) Récuperez l'archive du TP sur votre machine locale (idéalement sinon travailler directement sur le cluster) [l'archive template du tp](https://github.com/p2m2/tp-big-data-scala-spark-sansa/archive/refs/heads/main.zip) 
+##### a) Reperez les fichiers RDF sur le cluster avec les commandes yarn dans le repertoire */rdf/*
+##### b) Verifiez la structure des fichiers avec la command head de yarn
 
-#### IV) Intégrez dans la classe Main (*src/main/scala/fr/inrae/bigdata/tp/Main.scala*) le traitement de la partie B.
+#### II) Récuperez l'archive du TP sur votre machine local ou sur le cluster du TP. [l'archive template du tp](https://github.com/p2m2/tp-big-data-scala-spark-sansa/archive/refs/heads/main.zip) .
+##### a) inspectez le fichier *./build.sbt* qui va permetre de compiler une archive jar pour deployer l'applicatif.
+##### b) reperez le fichier contenat la class *Main* de l'application .
 
-#### V) Assemblez le Jar de votre application en utilisant *sbt assemby*. Lancez le traitement sur le jeu de donnée test
+#### III) Intégrez dans la classe Main le traitement de la partie B.
+
+#### IV) Assemblez le Jar de votre application en ciblant le jeu de donnée test et en utilisant la commande *sbt assemby*. Lancez le traitement.
  
-#### VI) Assemblez le Jar de votre application en utilisant *sbt assemby*. Lancez le traitement le jeu de donnée du repertoire hdfs */rdf*
+#### V) Assemblez le Jar de votre application en ciblant le jeu de donnée du répertoire *./rdf*. Lancez le traitement.
 
-#### VII) Inspectez le resultat *./results/compound_taxon.parquet* . Combien de couples composé/taxon sont enregistrés ?
+#### VI) Inspectez le resultat *./results/compound_taxon.parquet* . Combien de couples composé/taxon sont enregistrés ?
 
-#### VIII) Visualisez le Spark History via [un pont ssh](./clustertp.md#redirection-du-spark-history-sur-la-machine-locale) 
+#### VII) Visualisez le Spark History via [un tunnel ssh](./clustertp.md#redirection-du-spark-history-sur-la-machine-locale) 
+
+
+
 ## Liens
 
 - [github du tp](https://github.com/p2m2/tp-big-data-scala-spark-sansa/){:target="_blank"}

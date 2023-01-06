@@ -4,13 +4,13 @@
 
 L'objectif de ce TP est d'intégrer puis d'utiliser des graphes de connaissances (fichier RDF) de plusieurs sources (Mesh, NCBI, FORUM) dans un DataLake et un environnement Spark/Hadoop. 
 
-Nous utiliserons des [commandes Hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html) pour la gestion des fichiers et nous developperons le traitement en language [scala](https://www.scala-lang.org/). 
+Nous utiliserons des [commandes Hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html){:target="_blank"} pour la gestion des fichiers et nous developperons le traitement en language [scala](https://www.scala-lang.org/){:target="_blank"}. 
 
-Pour mettre au point la méthode nous utiliserons un [spark-shell](https://spark.apache.org/docs/latest/quick-start.html) puis nous developperons une application spark pour automatiser le traitement.
+Pour mettre au point la méthode nous utiliserons un [spark-shell](https://spark.apache.org/docs/latest/quick-start.html){:target="_blank"} puis nous developperons une application spark pour automatiser le traitement.
 
 ## Sujet
 
-Associer un composé référencé dans le projet [FORUM](https://forum-webapp.semantic-metabolomics.fr/#/about) avec un [PubChem/Taxonomy](https://pubchem.ncbi.nlm.nih.gov/source/22056) .
+Associer un composé référencé dans le projet [FORUM](https://forum-webapp.semantic-metabolomics.fr/#/about){:target="_blank"} avec un [PubChem/Taxonomy](https://pubchem.ncbi.nlm.nih.gov/source/22056){:target="_blank"} .
 
 ![fig1](./img/fig1.png)
 
@@ -19,7 +19,7 @@ Associer un composé référencé dans le projet [FORUM](https://forum-webapp.se
 
 ### A - Utilisation d'un  spark-shell pour travailler sur le jeu de données test
 
-Il faut se référer à la partie ["installation"](./prerequisites.md) si vous souhaitez travailler dans un environnement de développement personnel ou sur une machine virtuelle instanciée à partir d'un cloud académique ([orion](https://orion.cloud.inrae.fr/) ou [genostack](https://genostack.genouest.org/) par exemple).
+Il faut se référer à la partie ["installation"](./prerequisites.md) si vous souhaitez travailler dans un environnement de développement personnel ou sur une machine virtuelle instanciée à partir d'un cloud académique ([orion](https://orion.cloud.inrae.fr/){:target="_blank"} ou [genostack](https://genostack.genouest.org/){:target="_blank"} par exemple).
 
 
 #### Les plateformes d'exécution
@@ -95,9 +95,9 @@ WHERE {
 #### VIII) Visualisez le Spark History via [un pont ssh](./clustertp.md) 
 ## Liens
 
-- [github du tp](https://github.com/p2m2/tp-big-data-scala-spark-sansa/)
-- [documentation hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
-- [Documentation SANSA Stack](http://sansa-stack.github.io/SANSA-Stack/)
+- [github du tp](https://github.com/p2m2/tp-big-data-scala-spark-sansa/){:target="_blank"}
+- [documentation hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html){:target="_blank"}
+- [Documentation SANSA Stack](http://sansa-stack.github.io/SANSA-Stack/){:target="_blank"}
 
 
 ## Commandes YARN

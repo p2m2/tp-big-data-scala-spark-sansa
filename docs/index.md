@@ -92,7 +92,7 @@ WHERE {
 
 #### VII) Inspectez le resultat *./results/compound_taxon.parquet* . Combien de couples composé/taxon sont enregistrés ?
 
-#### VIII) Visualisez le Spark History via [un pont ssh](./clustertp.md) 
+#### VIII) Visualisez le Spark History via [un pont ssh](./clustertp.md#redirection-du-spark-history-sur-la-machine-locale) 
 ## Liens
 
 - [github du tp](https://github.com/p2m2/tp-big-data-scala-spark-sansa/){:target="_blank"}

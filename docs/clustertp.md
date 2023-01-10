@@ -51,8 +51,10 @@ spark-submit  \
 
 ## Redirection du Spark history sur la machine locale
 
+- 80xx est le port qui vous est attribué.
+
 ```sh
-ssh -f <login>@147.100.202.42 -L 18081:localhost:18080 -N
+ssh -f <login>@147.100.202.42 -L 80xx:localhost:18080 -N
 ```
 
 [Spark History](http://localhost:18081/){:target="_blank"}
